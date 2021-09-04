@@ -3,7 +3,7 @@
 Development and contributing
 ============================
 
-To do development work for Simple JWT, make your own fork on Github, clone it
+To do development work for Dynamic JWT, make your own fork on Github, clone it
 locally, make and activate a virtualenv for it, then from within the project
 directory:
 

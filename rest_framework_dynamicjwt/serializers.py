@@ -2,17 +2,13 @@ from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth.models import update_last_login
 from django.utils.translation import gettext_lazy as _
 from rest_framework import exceptions, serializers
-from rest_framework.exceptions import ErrorDetail, ValidationError
+from rest_framework.exceptions import ValidationError
 from rest_framework.fields import empty
-from rest_framework.generics import get_object_or_404
-from .models import AuthenticationSettingsModel
 
 from .models import AuthenticationSettingsModel
-
 from .settings import api_settings, default_authentication_settings
-from .tokens import RefreshToken, SlidingToken, UntypedToken
-
 from .token_blacklist.models import BlacklistedToken
+from .tokens import RefreshToken, SlidingToken, UntypedToken
 
 
 class PasswordField(serializers.CharField):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Simple JWT documentation build configuration file, created by
+# Dynamic JWT documentation build configuration file, created by
 # sphinx-quickstart on Thu Oct 16 20:43:24 2014.
 #
 # This file is execfile()d with the current directory set to its
@@ -74,7 +74,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Simple JWT'
+project = 'Dynamic JWT'
 copyright = '2020, David Sanders'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -82,7 +82,7 @@ copyright = '2020, David Sanders'
 # built documents.
 #
 # The full version, including alpha/beta/rc tags.
-release = get_distribution("djangorestframework_simplejwt").version
+release = get_distribution("djangorestframework_dynamicjwt").version
 
 # The short X.Y version.
 version = ".".join(release.split(".")[:2])
@@ -230,7 +230,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'rest_framework_dynamicjwt.tex', 'Simple JWT Documentation',
+  ('index', 'rest_framework_dynamicjwt.tex', 'Dynamic JWT Documentation',
    'David Sanders', 'manual'),
 ]
 
@@ -260,7 +260,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'rest_framework_dynamicjwt', 'Simple JWT Documentation',
+    ('index', 'rest_framework_dynamicjwt', 'Dynamic JWT Documentation',
      ['David Sanders'], 1)
 ]
 
@@ -274,8 +274,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'Simple JWT', 'Simple JWT',
-   'David Sanders', 'Simple JWT', 'A JSON Web Token authentication plugin for the Django REST Framework.',
+  ('index', 'Dynamic JWT', 'Dynamic JWT',
+   'David Sanders', 'Dynamic JWT', 'A JSON Web Token authentication plugin for the Django REST Framework.',
    'Miscellaneous'),
 ]
 

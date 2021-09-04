@@ -3,7 +3,7 @@
 Settings
 ========
 
-Some of Simple JWT's behavior can be customized through settings variables in
+Some of Dynamic JWT's behavior can be customized through settings variables in
 ``settings.py``:
 
 .. code-block:: python
@@ -14,7 +14,7 @@ Some of Simple JWT's behavior can be customized through settings variables in
 
   ...
 
-  SIMPLE_JWT = {
+  DYNAMIC_JWT = {
       'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
       'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
       'ROTATE_REFRESH_TOKENS': False,
@@ -116,10 +116,10 @@ key.
 The signing key that is used to sign the content of generated tokens.  For HMAC
 signing, this should be a random string with at least as many bits of data as
 is required by the signing protocol.  For RSA signing, this should be a string
-that contains an RSA private key that is 2048 bits or longer.  Since Simple JWT
+that contains an RSA private key that is 2048 bits or longer.  Since Dynamic JWT
 defaults to using 256-bit HMAC signing, the ``SIGNING_KEY`` setting defaults to
 the value of the ``SECRET_KEY`` setting for your django project.  Although this
-is the most reasonable default that Simple JWT can provide, it is recommended
+is the most reasonable default that Dynamic JWT can provide, it is recommended
 that developers change this setting to a value that is independent from the
 django project secret key.  This will make changing the signing key used for
 tokens easier in the event that it is compromised.

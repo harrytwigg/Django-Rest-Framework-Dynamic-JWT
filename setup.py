@@ -44,21 +44,21 @@ extras_require['dev'] = (
 
 
 setup(
-    name='djangorestframework_simplejwt',
+    name='djangorestframework_dynamicjwt',
     use_scm_version={"version_scheme": "post-release"},
     setup_requires=["setuptools_scm"],
-    url='https://github.com/jazzband/djangorestframework-simplejwt',
+    url='https://github.com/harrytwigg/djangorestframework-dynamicjwt',
     license='MIT',
     description='A minimal JSON Web Token authentication plugin for Django REST Framework',
     long_description=Path('README.rst').read_text(encoding='utf-8'),
-    author='David Sanders',
-    author_email='davesque@gmail.com',
+    author='Harry Twigg',
+    author_email='harrytwigg111@gmail.com',
     install_requires=[
         'django',
         'djangorestframework',
         'pyjwt>=2,<3',
         'uuid',
-        
+
     ],
     python_requires='>=3.7',
     extras_require=extras_require,

@@ -6,9 +6,11 @@ from .serializers import AuthenticationSettingsSerializer
 
 
 def generate_authentication_settings(custom_settings: dict = None) -> AuthenticationSettingsModel:
-    """Returns a model with the default authentication settings"""
+    """Creates a default authentication settings instance"""
 
-    return AuthenticationSettingsModel(**generate_authentication_settings(custom_settings).validated_data)
+    authentication_settings = AuthenticationSettingsModel(**generate_authentication_settings(custom_settings).validated_data)
+    authentication_settings.save()
+    return authentication_settings
 
 
 def generate_authentication_settings(custom_settings: dict = None) -> AuthenticationSettingsSerializer:

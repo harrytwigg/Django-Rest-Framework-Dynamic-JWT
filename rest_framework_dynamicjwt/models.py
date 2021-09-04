@@ -19,7 +19,7 @@ class TokenUser:
     class instead of a `User` model instance.  Instances of this class act as
     stateless user objects which are backed by validated tokens.
     """
-    # User is always active since Simple JWT will never issue a token for an
+    # User is always active since Dynamic JWT will never issue a token for an
     # inactive user
     is_active = True
 

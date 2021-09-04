@@ -1,12 +1,11 @@
 from datetime import timedelta
 from rest_framework_dynamicjwt.authentication_settings import generate_authentication_settings
-from rest_framework_dynamicjwt.models import AuthenticationSettingsModel
 from django.conf import settings
 from django.test.signals import setting_changed
 from django.utils.translation import gettext_lazy as _
 from rest_framework.settings import APISettings as _APISettings
 
-USER_SETTINGS = getattr(settings, 'SIMPLE_JWT', None)
+USER_SETTINGS = getattr(settings, 'DYNAMIC_JWT', None)
 
 DEFAULTS = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
@@ -78,7 +77,7 @@ def reload_api_settings(*args, **kwargs):  # pragma: no cover
 
     setting, value = kwargs['setting'], kwargs['value']
 
-    if setting == 'SIMPLE_JWT':
+    if setting == 'DYNAMIC_JWT':
         api_settings = APISettings(value, DEFAULTS, IMPORT_STRINGS)
         default_authentication_settings = generate_authentication_settings()
 
