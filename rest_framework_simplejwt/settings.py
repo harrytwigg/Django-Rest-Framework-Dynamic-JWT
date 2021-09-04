@@ -1,11 +1,10 @@
 from datetime import timedelta
-
+from rest_framework_simplejwt.authentication_settings import generate_authentication_settings
+from rest_framework_simplejwt.models import AuthenticationSettingsModel
 from django.conf import settings
 from django.test.signals import setting_changed
 from django.utils.translation import gettext_lazy as _
 from rest_framework.settings import APISettings as _APISettings
-
-from .utils import format_lazy
 
 USER_SETTINGS = getattr(settings, 'SIMPLE_JWT', None)
 
@@ -41,6 +40,7 @@ DEFAULTS = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
+
 IMPORT_STRINGS = (
     'AUTH_TOKEN_CLASSES',
     'TOKEN_USER_CLASS',
@@ -70,6 +70,7 @@ class APISettings(_APISettings):  # pragma: no cover
 
 
 api_settings = APISettings(USER_SETTINGS, DEFAULTS, IMPORT_STRINGS)
+default_authentication_settings = generate_authentication_settings()
 
 
 def reload_api_settings(*args, **kwargs):  # pragma: no cover
@@ -79,6 +80,7 @@ def reload_api_settings(*args, **kwargs):  # pragma: no cover
 
     if setting == 'SIMPLE_JWT':
         api_settings = APISettings(value, DEFAULTS, IMPORT_STRINGS)
+        default_authentication_settings = generate_authentication_settings()
 
 
 setting_changed.connect(reload_api_settings)

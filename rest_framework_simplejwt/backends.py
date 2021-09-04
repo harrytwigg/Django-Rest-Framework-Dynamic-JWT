@@ -1,8 +1,11 @@
-from django.utils.translation import gettext_lazy as _
 import jwt
-from jwt import InvalidAlgorithmError, InvalidTokenError, PyJWKClient, algorithms
+from django.utils.translation import gettext_lazy as _
+from jwt import (
+    InvalidAlgorithmError, InvalidTokenError, PyJWKClient, algorithms,
+)
 
 from .exceptions import TokenBackendError
+from .models import AuthenticationSettingsModel
 from .utils import format_lazy
 
 ALLOWED_ALGORITHMS = (
@@ -16,30 +19,22 @@ ALLOWED_ALGORITHMS = (
 
 
 class TokenBackend:
-    def __init__(
-        self,
-        algorithm,
-        signing_key=None,
-        verifying_key=None,
-        audience=None,
-        issuer=None,
-        jwk_url: str = None,
-        leeway=0,
-    ):
-        self._validate_algorithm(algorithm)
+    def __init__(self, authentication_settings: AuthenticationSettingsModel):
+        self._validate_algorithm(authentication_settings.algorithm)
 
-        self.algorithm = algorithm
-        self.signing_key = signing_key
-        self.audience = audience
-        self.issuer = issuer
+        self.algorithm = authentication_settings.algorithm
+        self.signing_key = authentication_settings.signing_key
+        self.audience = None if authentication_settings.audience == '' else authentication_settings.audience
+        self.issuer = None if authentication_settings.issuer == '' else authentication_settings.issuer
 
-        self.jwks_client = PyJWKClient(jwk_url) if jwk_url else None
-        self.leeway = leeway
+        self.jwks_client = PyJWKClient(
+            authentication_settings.jwk_url) if authentication_settings.jwk_url != '' else None
+        self.leeway = authentication_settings.leeway
 
-        if algorithm.startswith("HS"):
-            self.verifying_key = signing_key
+        if authentication_settings.algorithm.startswith("HS"):
+            self.verifying_key = authentication_settings.signing_key
         else:
-            self.verifying_key = verifying_key
+            self.verifying_key = authentication_settings.verifying_key
 
     def _validate_algorithm(self, algorithm):
         """
@@ -47,10 +42,12 @@ class TokenBackend:
         algorithms that require it
         """
         if algorithm not in ALLOWED_ALGORITHMS:
-            raise TokenBackendError(format_lazy(_("Unrecognized algorithm type '{}'"), algorithm))
+            raise TokenBackendError(format_lazy(
+                _("Unrecognized algorithm type '{}'"), algorithm))
 
         if algorithm in algorithms.requires_cryptography and not algorithms.has_crypto:
-            raise TokenBackendError(format_lazy(_("You must have cryptography installed to use {}."), algorithm))
+            raise TokenBackendError(format_lazy(
+                _("You must have cryptography installed to use {}."), algorithm))
 
     def get_verifying_key(self, token):
         if self.algorithm.startswith("HS"):
@@ -71,7 +68,8 @@ class TokenBackend:
         if self.issuer is not None:
             jwt_payload['iss'] = self.issuer
 
-        token = jwt.encode(jwt_payload, self.signing_key, algorithm=self.algorithm)
+        token = jwt.encode(jwt_payload, self.signing_key,
+                           algorithm=self.algorithm)
         if isinstance(token, bytes):
             # For PyJWT <= 1.7.1
             return token.decode('utf-8')

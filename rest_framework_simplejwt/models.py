@@ -1,5 +1,9 @@
+import uuid
+
 from django.contrib.auth import models as auth_models
+from django.db import models
 from django.db.models.manager import EmptyManager
+from django.utils import timezone
 from django.utils.functional import cached_property
 
 from .compat import CallableFalse, CallableTrue
@@ -102,3 +106,71 @@ class TokenUser:
 
     def get_username(self):
         return self.username
+
+
+class AuthenticationSettingsModel(models.Model):
+    """Model that stores JWT config information"""
+
+    id = models.UUIDField(
+        primary_key=True, default=uuid.uuid4, editable=False, unique=True)
+    creation_time = models.DateTimeField(default=timezone.now)
+
+    access_token_lifetime = models.PositiveBigIntegerField(
+        default=api_settings.ACCESS_TOKEN_LIFETIME.total_seconds)
+    refresh_token_lifetime = models.PositiveBigIntegerField(
+        default=api_settings.REFRESH_TOKEN_LIFETIME.total_seconds)
+
+    rotate_refresh_tokens = models.BooleanField(
+        default=api_settings.ROTATE_REFRESH_TOKENS)
+    blacklist_after_rotation = models.BooleanField(
+        default=api_settings.BLACKLIST_AFTER_ROTATION)
+    update_last_login = models.BooleanField(
+        default=api_settings.UPDATE_LAST_LOGIN)
+
+    class Algorithm(models.TextChoices):
+        HS256 = 'HS256', 'HS256'
+        HS384 = 'HS384', 'HS384'
+        HS512 = 'HS512', 'HS512'
+        RS256 = 'RS256', 'RS256'
+        RS384 = 'RS384', 'RS384'
+        RS512 = 'RS512', 'RS512'
+
+    algorithm = models.CharField(
+        max_length=5, choices=Algorithm.choices, default=api_settings.ALGORITHM)
+
+    signing_key = models.TextField()
+    verifying_key = models.TextField()
+
+    audience = models.CharField(
+        max_length=100, blank=True, default='' if api_settings.AUDIENCE == None else api_settings.AUDIENCE)
+    issuer = models.CharField(max_length=100, blank=True,
+                              default='' if api_settings.ISSUER == None else api_settings.ISSUER)
+    jwk_url = models.CharField(
+        max_length=500, blank=True, default='' if api_settings.JWK_URL == None else api_settings.JWK_URL)
+    leeway = models.PositiveIntegerField(default=api_settings.LEEWAY)
+
+    auth_header_name = models.CharField(
+        max_length=50, default='' if api_settings.AUTH_HEADER_NAME is None else api_settings.AUTH_HEADER_NAME)
+    user_id_field = models.CharField(
+        max_length=50, default='' if api_settings.USER_ID_FIELD is None else api_settings.USER_ID_FIELD)
+    user_id_claim = models.CharField(
+        max_length=50, default='' if api_settings.USER_ID_CLAIM is None else api_settings.USER_ID_CLAIM)
+
+    token_type_claim = models.CharField(
+        max_length=20, default='' if api_settings.TOKEN_TYPE_CLAIM is None else api_settings.TOKEN_TYPE_CLAIM)
+    jti_claim = models.CharField(
+        max_length=20, default='' if api_settings.JTI_CLAIM is None else api_settings.JTI_CLAIM)
+
+    sliding_token_refresh_exp_claim = models.CharField(
+        max_length=50, default='' if api_settings.SLIDING_TOKEN_REFRESH_EXP_CLAIM is None else api_settings.SLIDING_TOKEN_REFRESH_EXP_CLAIM)
+    sliding_token_lifetime = models.PositiveIntegerField(
+        default=api_settings.SLIDING_TOKEN_LIFETIME.total_seconds)
+    sliding_token_refresh_lifetime = models.PositiveIntegerField(
+        default=api_settings.SLIDING_TOKEN_REFRESH_LIFETIME.total_seconds)
+
+    class Meta:
+        verbose_name = "Authentication Setting"
+        verbose_name_plural = "Authentication Settings"
+
+    def __str__(self):
+        return str(self.id)

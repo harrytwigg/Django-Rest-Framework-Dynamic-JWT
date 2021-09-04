@@ -1,34 +1,23 @@
-Simple JWT
+Dynamic JWT
 ==========
-
-.. image:: https://jazzband.co/static/img/badge.svg
-   :target: https://jazzband.co/
-   :alt: Jazzband
-.. image:: https://github.com/jazzband/djangorestframework-simplejwt/workflows/Test/badge.svg
-   :target: https://github.com/jazzband/djangorestframework-simplejwt/actions
-   :alt: GitHub Actions
-.. image:: https://codecov.io/gh/jazzband/djangorestframework-simplejwt/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/jazzband/djangorestframework-simplejwt
-.. image:: https://img.shields.io/pypi/v/djangorestframework-simplejwt.svg
-  :target: https://pypi.python.org/pypi/djangorestframework-simplejwt
-.. image:: https://img.shields.io/pypi/pyversions/djangorestframework-simplejwt.svg
-  :target: https://pypi.python.org/pypi/djangorestframework-simplejwt
-.. image:: https://img.shields.io/pypi/djversions/djangorestframework-simplejwt.svg
-  :target: https://pypi.python.org/pypi/djangorestframework-simplejwt
-.. image:: https://readthedocs.org/projects/django-rest-framework-simplejwt/badge/?version=latest
-  :target: https://django-rest-framework-simplejwt.readthedocs.io/en/latest/
 
 Abstract
 --------
 
-Simple JWT is a JSON Web Token authentication plugin for the `Django REST
+Dynamic JWT is a fork of the Simple JWT library for Django REST Framework enabling custom authentication settings eg different public keys timeouts etc for different requests.
+
+Existing programs are compatible and default authentication settings specified in your setting.py file under the label DYNAMIC_JWT can still be used
+
+I have maintained all other features of the Simple JWT library as closely as possible, I am a big fan of the project.
+
+How does this project differ to Simple JWT?
+------------------------------------------
+
+
+
+Dynamic JWT is a JSON Web Token authentication plugin for the `Django REST
 Framework <http://www.django-rest-framework.org/>`__.
 
-For full documentation, visit `django-rest-framework-simplejwt.readthedocs.io
+Do check out the Simple JWT docs as the settings used are the same as in Dynamic JWT `django-rest-framework-simplejwt.readthedocs.io
 <https://django-rest-framework-simplejwt.readthedocs.io/en/latest/>`__.
 
-Looking for Maintainers
------------------------
-
-For more information, see `here
-<https://github.com/jazzband/djangorestframework-simplejwt/issues/207>`__.

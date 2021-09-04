@@ -57,6 +57,8 @@ setup(
         'django',
         'djangorestframework',
         'pyjwt>=2,<3',
+        'uuid',
+        
     ],
     python_requires='>=3.7',
     extras_require=extras_require,
