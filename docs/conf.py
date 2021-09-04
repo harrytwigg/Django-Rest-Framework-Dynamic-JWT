@@ -35,8 +35,8 @@ def django_configure():
             'django.contrib.staticfiles',
 
             'rest_framework',
-            'rest_framework_simplejwt',
-            'rest_framework_simplejwt.token_blacklist',
+            'rest_framework_dynamicjwt',
+            'rest_framework_dynamicjwt.token_blacklist',
         ),
     )
 
@@ -210,7 +210,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'rest_framework_simplejwtdoc'
+htmlhelp_basename = 'rest_framework_dynamicjwtdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -230,7 +230,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'rest_framework_simplejwt.tex', 'Simple JWT Documentation',
+  ('index', 'rest_framework_dynamicjwt.tex', 'Simple JWT Documentation',
    'David Sanders', 'manual'),
 ]
 
@@ -260,7 +260,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'rest_framework_simplejwt', 'Simple JWT Documentation',
+    ('index', 'rest_framework_dynamicjwt', 'Simple JWT Documentation',
      ['David Sanders'], 1)
 ]
 

@@ -7,7 +7,7 @@ Submodules
 rest\_framework\_simplejwt.authentication module
 ------------------------------------------------
 
-.. automodule:: rest_framework_simplejwt.authentication
+.. automodule:: rest_framework_dynamicjwt.authentication
     :members:
     :undoc-members:
     :show-inheritance:
@@ -15,7 +15,7 @@ rest\_framework\_simplejwt.authentication module
 rest\_framework\_simplejwt.models module
 ----------------------------------------
 
-.. automodule:: rest_framework_simplejwt.models
+.. automodule:: rest_framework_dynamicjwt.models
     :members:
     :undoc-members:
     :show-inheritance:
@@ -23,7 +23,7 @@ rest\_framework\_simplejwt.models module
 rest\_framework\_simplejwt.serializers module
 ---------------------------------------------
 
-.. automodule:: rest_framework_simplejwt.serializers
+.. automodule:: rest_framework_dynamicjwt.serializers
     :members:
     :undoc-members:
     :show-inheritance:
@@ -31,7 +31,7 @@ rest\_framework\_simplejwt.serializers module
 rest\_framework\_simplejwt.tokens module
 ----------------------------------------
 
-.. automodule:: rest_framework_simplejwt.tokens
+.. automodule:: rest_framework_dynamicjwt.tokens
     :members:
     :undoc-members:
     :show-inheritance:
@@ -39,7 +39,7 @@ rest\_framework\_simplejwt.tokens module
 rest\_framework\_simplejwt.utils module
 ---------------------------------------
 
-.. automodule:: rest_framework_simplejwt.utils
+.. automodule:: rest_framework_dynamicjwt.utils
     :members:
     :undoc-members:
     :show-inheritance:
@@ -47,7 +47,7 @@ rest\_framework\_simplejwt.utils module
 rest\_framework\_simplejwt.views module
 ---------------------------------------
 
-.. automodule:: rest_framework_simplejwt.views
+.. automodule:: rest_framework_dynamicjwt.views
     :members:
     :undoc-members:
     :show-inheritance:
@@ -56,7 +56,7 @@ rest\_framework\_simplejwt.views module
 Module contents
 ---------------
 
-.. automodule:: rest_framework_simplejwt
+.. automodule:: rest_framework_dynamicjwt
     :members:
     :undoc-members:
     :show-inheritance:

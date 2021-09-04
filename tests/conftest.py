@@ -42,8 +42,8 @@ def pytest_configure():
             'django.contrib.staticfiles',
 
             'rest_framework',
-            'rest_framework_simplejwt',
-            'rest_framework_simplejwt.token_blacklist',
+            'rest_framework_dynamicjwt',
+            'rest_framework_dynamicjwt.token_blacklist',
 
             'tests',
         ),

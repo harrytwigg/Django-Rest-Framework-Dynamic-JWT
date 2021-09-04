@@ -19,7 +19,7 @@ lint:
 
 .PHONY: lint-roll
 lint-roll:
-	isort rest_framework_simplejwt tests
+	isort rest_framework_dynamicjwt tests
 	$(MAKE) lint
 
 .PHONY: tests
@@ -36,12 +36,12 @@ build-docs:
 		setup.py \
 		*confest* \
 		tests/* \
-		rest_framework_simplejwt/token_blacklist/* \
-		rest_framework_simplejwt/backends.py \
-		rest_framework_simplejwt/compat.py \
-		rest_framework_simplejwt/exceptions.py \
-		rest_framework_simplejwt/settings.py \
-		rest_framework_simplejwt/state.py
+		rest_framework_dynamicjwt/token_blacklist/* \
+		rest_framework_dynamicjwt/backends.py \
+		rest_framework_dynamicjwt/compat.py \
+		rest_framework_dynamicjwt/exceptions.py \
+		rest_framework_dynamicjwt/settings.py \
+		rest_framework_dynamicjwt/state.py
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(MAKE) -C docs doctest

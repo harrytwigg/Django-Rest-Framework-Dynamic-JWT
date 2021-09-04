@@ -23,7 +23,7 @@ Simple JWT can be installed with pip::
 
 Then, your django project must be configured to use the library.  In
 ``settings.py``, add
-``rest_framework_simplejwt.authentication.JWTAuthentication`` to the list of
+``rest_framework_dynamicjwt.authentication.JWTAuthentication`` to the list of
 authentication classes:
 
 .. code-block:: python
@@ -32,7 +32,7 @@ authentication classes:
       ...
       'DEFAULT_AUTHENTICATION_CLASSES': (
           ...
-          'rest_framework_simplejwt.authentication.JWTAuthentication',
+          'rest_framework_dynamicjwt.authentication.JWTAuthentication',
       )
       ...
   }
@@ -42,7 +42,7 @@ for Simple JWT's ``TokenObtainPairView`` and ``TokenRefreshView`` views:
 
 .. code-block:: python
 
-  from rest_framework_simplejwt.views import (
+  from rest_framework_dynamicjwt.views import (
       TokenObtainPairView,
       TokenRefreshView,
   )
@@ -61,7 +61,7 @@ signing key:
 .. code-block:: python
   # add `TokenVerifyView` to your import
   
-  from rest_framework_simplejwt.views import TokenVerifyView
+  from rest_framework_dynamicjwt.views import TokenVerifyView
   
   # and define it in your `urlpatterns`
   urlpatterns = [
@@ -71,13 +71,13 @@ signing key:
   ]
 
 If you wish to use localizations/translations, simply add 
-``rest_framework_simplejwt`` to ``INSTALLED_APPS``.
+``rest_framework_dynamicjwt`` to ``INSTALLED_APPS``.
 
 .. code-block:: python
 
   INSTALLED_APPS = [
       ...
-      'rest_framework_simplejwt',
+      'rest_framework_dynamicjwt',
       ...
   ]
 

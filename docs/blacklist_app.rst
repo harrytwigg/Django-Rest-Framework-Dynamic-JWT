@@ -14,7 +14,7 @@ this app, include it in your list of installed apps in ``settings.py``:
 
   INSTALLED_APPS = (
       ...
-      'rest_framework_simplejwt.token_blacklist',
+      'rest_framework_dynamicjwt.token_blacklist',
       ...
   )
 
@@ -38,7 +38,7 @@ subclass instance and calling the instance's ``blacklist`` method:
 
 .. code-block:: python
 
-  from rest_framework_simplejwt.tokens import RefreshToken
+  from rest_framework_dynamicjwt.tokens import RefreshToken
 
   token = RefreshToken(base64_encoded_token_string)
   token.blacklist()

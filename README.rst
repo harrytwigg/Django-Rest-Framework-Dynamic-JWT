@@ -1,4 +1,4 @@
-Dynamic JWT
+Django REST Framework Dynamic JWT
 ==========
 
 Abstract
